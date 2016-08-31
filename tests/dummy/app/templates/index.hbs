@@ -1,0 +1,17 @@
+<h2>ember-userengage demo</h2>
+{{#if userengageInitialized}}
+  <p>
+    Hello, {{fullName}}!
+    <br><button {{action "destroy"}}>Destroy Userengage</button>
+  </p>
+{{else}}
+  <p>
+    {{input placeholder="User Email" value=email}}
+    <br>{{input placeholder="User Full Name" value=fullName}}
+    <br><button {{action "login"}}>Simulate Login</button>
+  </p>
+  <p>
+    OR:<br>
+    <button {{action "initUserengageForGuests"}}>Initialize Userengage for guest user</button>
+  </p>
+{{/if}}
