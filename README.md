@@ -1,7 +1,5 @@
 # ember-userengage
 
-Easily integrate [userengage.io](https://userengage.io) in your app as an Ember Service.
-
 
 ## Install
 

@@ -1,7 +1,7 @@
 {
   "name": "ember-userengage",
   "version": "0.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Easily integrate userengage.io in your app as an Ember Service",
   "directories": {
     "doc": "doc",
     "test": "tests"
