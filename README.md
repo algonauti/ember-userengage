@@ -1,26 +1,107 @@
-# Ember-userengage
+# ember-userengage
 
-This README outlines the details of collaborating on this Ember addon.
+Easily integrate [userengage.io](https://userengage.io) in your app as an Ember Service.
 
-## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Install
 
-## Running
+Run the following command from inside your ember-cli project:
 
-* `ember serve`
-* Visit your app at http://localhost:4200.
+    ember install ember-userengage
 
-## Running Tests
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+## Configure
 
-## Building
+You need to set your userengage.io Api Key in the `ENV` var on your `config/environment.js` file, like this:
 
-* `ember build`
+```js
+  var ENV = {
+    // ...
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+    userEngage: {
+      apiKey: 'your-userengage-api-key'
+    }
+
+    // ...
+  }
+```
+
+
+## Usage
+
+A service named `userengage` will be available in your app, providing the following methods:
+
+* `initialize(options)`
+* `refresh(options)`
+* `pageHit()`
+* `destroy()`
+
+They map to methods described in [userengage.io official doc](https://userengage.io/en-us/integrations-javascript/)
+
+
+### Initialize Userengage widget for non-authenticated users
+
+In your component or controller:
+
+```js
+  userengage: Ember.inject.service(),
+  actions: {
+    initUserengageForGuests() {
+      this.get('userengage').initialize();
+    },
+  }
+```
+
+
+### Initialize Userengage widget for authenticated users
+
+In your component or controller:
+
+```js
+  userengage: Ember.inject.service(),
+  actions: {
+    initUserengageForGuests() {
+      this.get('userengage').initialize({
+        email: this.get('model.email'),
+        name: this.get('model.fullName'),
+        custom_attribute: this.get('model.customAttribute')
+      });
+    },
+  }
+```
+
+
+### Notifying visited pages to Userengage
+
+In your app's `router.js`:
+
+```js
+  didTransition() {
+    this._super(...arguments);
+    this.userengagePageChange();
+  },
+
+  userengage: Ember.inject.service(),
+  userengagePageChange() {
+    this.get('userengage').pageHit();
+  }
+```
+
+
+### Destroying Userengage widget
+
+In your component or controller:
+
+```js
+  userengage: Ember.inject.service(),
+  actions: {
+    destroy() {
+      this.get('userengage').destroy();
+    }
+  }
+```
+
+
+## License
+
+ember-userengage is released under the [MIT License](http://www.opensource.org/licenses/MIT).

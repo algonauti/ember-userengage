@@ -1,6 +1,6 @@
 {
   "name": "ember-userengage",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -11,11 +11,17 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/algonauti/ember-userengage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/algonauti/ember-userengage/issues"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Davide Papagni",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -40,7 +46,9 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "userengage",
+    "userengage.io"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6"
